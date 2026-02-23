@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Last Of Us</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+* {margin:0; padding:0; box-sizing:border-box; font-family: 'Arial', Helvetica, sans-serif;}
+body {background:#0b0b0b; color:#fff; overflow-x:hidden;}
+a {text-decoration:none; color:inherit;}
+
+
+.navbar {
+position:fixed; top:0; width:100%; z-index:100;
+padding:15px 30px; background:rgba(0,0,0,0.85);
+display:flex; justify-content:space-between; align-items:center;
+box-shadow:0 2px 10px rgba(0,0,0,0.7);
+}
+.logo {color:#e50914; font-size:24px; font-weight:bold; letter-spacing:1px;}
+#searchInput {
+padding:8px 18px; border-radius:20px; border:none; outline:none;
+background:#1c1c1c; color:#fff;
+transition:0.3s; width:180px;
+}
+#searchInput:focus {width:250px; background:#2a2a2a;}
+
+
+.hero {
+margin-top:70px; height:75vh; position:relative; overflow:hidden;
+}
+.hero-slide {
+position:absolute; inset:0; background-size:cover; background-position:center;
+opacity:0; transition:opacity 1s ease-in-out, transform 1s;
+transform:scale(1);
+}
+.hero-slide.active {opacity:1; transform:scale(1.02);}
+.hero-slide::after {
+content:""; position:absolute; inset:0;
+background:linear-gradient(to top, #0b0b0b 25%, transparent 100%);
+}
+.hero-content {
+position:absolute; bottom:60px; left:40px; z-index:2; max-width:50%;
+}
+.hero-content h2 {font-size:42px; margin-bottom:10px; text-shadow:2px 2px 6px rgba(0,0,0,0.8);}
+.hero-content p {font-size:16px; margin-bottom:15px; color:#ccc; text-shadow:1px 1px 4px rgba(0,0,0,0.7);}
+.hero-buttons button {
+margin-right:12px; padding:12px 25px; border:none; border-radius:5px; cursor:pointer;
+font-weight:bold; font-size:14px; transition:all 0.3s;
+}
+.play {
+background:#e50914; color:#fff;
+}
+.play:hover {background:#ff1414; transform:scale(1.05);}
+.list {
+background:rgba(109,109,110,0.7); color:#fff;
+}
+.list:hover {background:rgba(109,109,110,1); transform:scale(1.05);}
+
+
+.category {padding:30px 20px;}
+.category h3 {font-size:22px; margin-bottom:15px; border-left:4px solid #e50914; padding-left:8px;}
+.row {display:flex; gap:16px; overflow-x:auto; padding-bottom:10px;}
+.card {
+min-width:180px; height:110px; border-radius:8px; overflow:hidden;
+position:relative; transition:transform 0.3s, box-shadow 0.3s;
+}
+.card img {width:100%; height:100%; object-fit:cover; display:block;}
+.card-info {
+position:absolute; bottom:0; width:100%; padding:8px;
+background:linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+}
+.card span {color:#e50914; font-size:12px; font-weight:bold;}
+.card p {font-size:13px; margin-top:2px;}
+.card:hover {
+transform:scale(1.15); z-index:10;
+box-shadow:0 8px 20px rgba(0,0,0,0.7);
+}
+
+
+.row::-webkit-scrollbar {height:8px;}
+.row::-webkit-scrollbar-thumb {background:#e50914; border-radius:4px;}
+.row::-webkit-scrollbar-track {background:#1c1c1c;}
+
+
+@media(max-width:768px){
+.hero-content {max-width:70%; left:20px; bottom:40px;}
+.hero-content h2 {font-size:32px;}
+.hero-content p {font-size:14px;}
+.card {min-width:140px; height:90px;}
+}
+</style>
+</head>
+<body>
+
+
+<header class="navbar">
+<h1 class="logo">The Last Of Us</h1>
+<input type="text" id="searchInput" placeholder="Search arcs..." />
+</header>
+
+
+<section class="hero">
+
+<div class="hero-slide active" style="background-image:url('Z.jpeg')">
+<div class="hero-content">
+<h2>Zumbalympics Arc</h2>
+<p>Competition • Performance • School Event</p>
+<div class="hero-buttons">
+<button class="play">▶ Play</button>
+<button class="list">＋ My List</button>
+</div>
+</div>
+</div>
+
+<div class="hero-slide" style="background-image:url('SCM.jpg')">
+
+<div class="hero-content">
+<h2>SciMaTech Arc</h2>
+<p>Science • Technology • Innovation</p>
+<div class="hero-buttons">
+<button class="play">▶ Play</button>
+<button class="list">＋ My List</button>
+</div>
+</div>
+</div>
+
+<div class="hero-slide" style="background-image:url('INT.jpeg')">
+<div class="hero-content">
+<h2>Intramurals Arc</h2>
+<p>Sports • Competition • Team Spirit</p>
+<div class="hero-buttons">
+<button class="play">▶ Play</button>
+<button class="list">＋ My List</button>
+</div>
+</div>
+</div>
+
+<div class="hero-slide" style="background-image:url('SFD.jpeg)">
+<div class="hero-content">
+<h2>Short Films Arc</h2>
+<p>Creativity • Storytelling • Cinema</p>
+<div class="hero-buttons">
+<button class="play">▶ Play</button>
+<button class="list">＋ My List</button>
+</div>
+</div>
+</div>
+
+
+
+<div class="hero-slide" style="background-image:url('BW.JPG')">
+<div class="hero-content">
+<h2>Buwan ng Wika Arc</h2>
+<p>Culture • Language • Filipino Pride</p>
+<div class="hero-buttons">
+<button class="play">▶ Play</button>
+<button class="list">＋ My List</button>
+</div>
+</div>
+</div>
+
+<div class="hero-slide" style="background-image:url('B ARC.JPG')">
+<div class="hero-content">
+<h2>Theater Play Arc</h2>
+<p> Drama • Disney • Musical </p>
+<div class="hero-buttons">
+<button class="play">▶ Play</button>
+<button class="list">＋ My List</button>
+</div>
+</div>
+</div>
+
+<div class="hero-slide" style="background-image:url('YEP.JPEG')">
+<div class="hero-content">
+<h2>Year-end Party Arc</h2>
+<p> Success • Connection • Celebration </p>
+<div class="hero-buttons">
+<button class="play">▶ Play</button>
+<button class="list">＋ My List</button>
+</div>
+</div>
+</div>
+
+<div class="hero-slide" style="background-image:url('TDC.PNG')">
+<div class="hero-content">
+<h2>Teachers’ Day Arc</h2>
+<p> Inspiration • Tribute • Appreciation </p>
+<div class="hero-buttons">
+<button class="play">▶ Play</button>
+<button class="list">＋ My List</button>
+</div>
+</div>
+</div>
+
+
+
+<div class="hero-slide" style="background-image:url('IS ARC.JPEG')">
+<div class="hero-content">
+<h2>Isaac Random Arc</h2>
+<p> Laughter • Nostalgia • Moments </p>
+<div class="hero-buttons">
+<button class="play">▶ Play</button>
+<button class="list">＋ My List</button>
+</div>
+</div>
+</div>
+
+</section>
+
+<main>
+
+
+<section class="category" data-name="zumbalympics arc">
+<h3>Zumbalympics </h3>
+<div class="row">
+
+<a href="ELIM.MP4" class="card">
+<img src="ELEM.jpeg">
+<div class="card-info">
+<span>EP 1</span>
+<p>Preliminary Round</p>
+</div>
+</a>
+
+<a href="FINAL.MOV" class="card">
+<img src="FINAL.jpeg">
+<div class="card-info">
+<span>EP 2</span>
+<p>Final Round</p>
+</div>
+</a>
+
+</div>
+</section>
+
+
+<section class="category" data-name="scimatech arc">
+<h3>SciMaTech </h3>
+<div class="row">
+
+<a href="SCI.MP4" class="card">
+<img src="SCIEMA.jpeg">
+<div class="card-info">
+<span>EP 1</span>
+<p></p>
+</div>
+</a>
+
+</div>
+</section>
+
+
+<section class="category" data-name="intramurals arc">
+<h3>Intramurals </h3>
+<div class="row">
+
+<a href="VBALL.MP4" class="card">
+<img src="VV.jpeg">
+<div class="card-info">
+<span>EP 1</span>
+<p>Volleyball (Boys & Girls)</p>
+</div>
+</a>
+
+<a href="BBALL.MOV" class="card">
+<img src="BBALL.jpeg">
+<div class="card-info">
+<span>EP 2</span>
+<p>Basketball</p>
+</div>
+</a>
+
+
+
+</div>
+</section>
+
+
+<section class="category" data-name="short films arc">
+<h3>Short Films </h3>
+<div class="row">
+<a href="BURNOUT.MP4" class="card"><img src="BURN.jpeg"><div class="card-info"><span>EP 1</span><p>Burnout</p></div></a>
+<a href="GUNITA.MP4" class="card"><img src="GUNITA.jpeg"><div class="card-info"><span>EP 2</span><p>Gunita ng Alon</p></div></a>
+<a href="KOBE.MP4" class="card"><img src="INSA.jpeg"><div class="card-info"><span>EP 3</span><p>Insanity</p></div></a>
+<a href="MULTO.MP4" class="card"><img src="MU.jpeg"><div class="card-info"><span>EP 4</span><p>Multo</p></div></a>
+<a href="PLACE.MP4" class="card"><img src="PLACE.jpeg"><div class="card-info"><span>EP 5</span><p>The Place that Found Us</p></div></a>
+<a href="P.MP4" class="card"><img src="PECA.jpeg"><div class="card-info"><span>EP 6</span><p>Peccalita</p></div></a>
+<a href="SHUTTER.MP4" class="card"><img src="SHUT.jpeg"><div class="card-info"><span>EP 7</span><p>Shutter</p></div></a>
+</div>
+</section>
+
+
+<section class="category" data-name="buwan ng wika arc">
+<h3>Buwan ng Wika </h3>
+<div class="row">
+
+<a href="PISTA.MP4" class="card">
+<img src="PIS.JPG">
+<div class="card-info">
+<span>EP 1</span>
+<p>Pistang Pinoy</p>
+</div>
+</a>
+
+<a href="Sabayang pagbigkas.MP4" class="card">
+<img src="SPTT.JPEG">
+<div class="card-info">
+<span>EP 2</span>
+<p>Sabayang Pagbigkas</p>
+</div>
+</a>
+
+</div>
+</section>
+
+<section class="category" data-name="Theaters Play">
+<h3>Theater Play </h3>
+<div class="row">
+
+<a href="BAT.MOV" class="card">
+<img src="BATBB.JPEG">
+<div class="card-info">
+<span>EP 1</span>
+<p>Beauty and the Beast</p>
+</div>
+</a>
+
+</div>
+</section>
+
+<section class="category" data-name="Year End">
+<h3>Year-end Party</h3>
+<div class="row">
+
+<a href="Y.MP4" class="card">
+<img src="YEDD.JPG">
+<div class="card-info">
+<span>EP 1</span>
+<p></p>
+</div>
+</a>
+
+</div>
+</section>
+
+<section class="category" data-name="Teachers Day">
+<h3>Teachers’ Day Celebration</h3>
+<div class="row">
+
+<a href="TC.MOV" class="card">
+<img src="TDC.JPEG">
+<div class="card-info">
+<span>EP 1</span>
+<p></p>
+</div>
+</a>
+
+</div>
+</section>
+
+
+
+
+<section class="category" data-name="Isaac Random">
+<h3>Isaac Random</h3>
+<div class="row">
+
+<a href="ISAAC.MP4" class="card">
+<img src="RA1.PNG">
+<div class="card-info">
+<span>EP 1</span>
+<p></p>
+</div>
+</a>
+
+<a href="2.MP4" class="card">
+<img src="RA2.PNG">
+<div class="card-info">
+<span>EP 2</span>
+<p></p>
+</div>
+</a>
+
+<a href="EP3.MP4" class="card">
+<img src="RA3.PNG">
+<div class="card-info">
+<span>EP 3</span>
+<p></p>
+</div>
+</a>
+
+<a href="Ep4.MP4" class="card">
+<img src="RA4.PNG">
+<div class="card-info">
+<span>EP 4</span>
+<p></p>
+</div>
+</a>
+
+
+
+
+</div>
+</section>
+
+</main>
+
+<script>
+
+let slides = document.querySelectorAll(".hero-slide");
+let index = 0;
+setInterval(() => {
+slides[index].classList.remove("active");
+index = (index + 1) % slides.length;
+slides[index].classList.add("active");
+}, 5000);
+
+
+document.getElementById("searchInput").addEventListener("keyup", function(){
+let v = this.value.toLowerCase();
+document.querySelectorAll(".category").forEach(c => {
+c.style.display = c.dataset.name.includes(v) ? "block" : "none";
+});
+});
+
+document.querySelectorAll(".play").forEach(btn => {
+btn.addEventListener("click", () => alert("Playing this arc!"));
+});
+document.querySelectorAll(".list").forEach(btn => {
+btn.addEventListener("click", () => alert("Added to My List!"));
+});
+</script>
+
+</body>
+</html>
+
